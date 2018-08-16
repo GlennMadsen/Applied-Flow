@@ -21,7 +21,7 @@ class ResumePreviewer extends Component {
 					<section key={section.id} x-display={"" + !this.props.mask.includes(section.id)}>
 						<h2>{section.heading}</h2>
 						{section.subsections.map((subsection) =>
-							<section key={subsection.id} x-display={"" + !this.props.mask.includes(subsection.id)}>
+							<section key={subsection.id} className="indent" x-display={"" + !this.props.mask.includes(subsection.id)}>
 								<h3>{subsection.heading}</h3>
 								<h4>{subsection.subheading}</h4>
 								<ol>

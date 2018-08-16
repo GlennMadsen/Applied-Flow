@@ -225,6 +225,32 @@ input {
     margin: 0;
     box-shadow: none;
   }
+  .ResumePreviewer h1 {
+    font-size: .4in;
+    margin: 0;
+  }
+  .ResumePreviewer h2 {
+    margin-bottom: 0;
+  }
+  .ResumePreviewer h3 {
+    margin: 0;
+  }
+  .ResumePreviewer h4 {
+    margin: 0;
+    font-style: italic;
+    font-size: .14in;
+  }
+  .ResumePreviewer .indent {
+    padding-left: .75in;
+  }
+  .ResumePreviewer section ol {
+    margin-top: .05in;
+  }
+  .ResumePreviewer li {
+    padding-bottom: 0;
+    line-height: .125in;
+    font-size: .125in;
+  }
   .ResumePreviewer > footer {
     display: block;
     text-align: center;
