@@ -36,7 +36,14 @@ class AppliedFlow extends Component {
 			<ResumeEditor key="ResumeEditor" resume={this.state.resume} onChange={this.onResumeChange} className="card" />,
 			<MaskEditor key="MaskEditor" resume={this.state.resume} mask={this.state.mask} className="card" onChange={this.onMaskChange}/>,
 			<ResumePreviewer key="ResumePreviewer" resume={this.state.resume} mask={this.state.mask} className="card" />,
-			<textarea className="card" key="ExportData" value={JSON.stringify(this.state.resume)} />
+			<div className="card" key="ExportData">
+				<textarea value={this.state.importExport} onChange={(e) => this.setState({importExport:e.target.value})} />
+				<button type="button" onClick={() => this.setState({importExport:JSON.stringify(this.state)})}>Export</button>
+				<button type="button" onClick={() => this.setState(JSON.parse(this.state.importExport),function () {
+					localStorage.setItem("A~F:resume:v0",JSON.stringify(this.state.resume));
+					localStorage.setItem("A~F:mask:v0",JSON.stringify(this.state.mask));
+				})}>Import</button>
+			</div>
 		]);
 	}
 
