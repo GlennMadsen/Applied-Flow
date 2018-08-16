@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ResumeEditor from "../ResumeEditor/ResumeEditor";
 import ResumePreviewer from "../ResumePreviewer/ResumePreviewer";
+import MaskEditor from "../MaskEditor/MaskEditor";
 
 class AppliedFlow extends Component {
 	constructor(props) {
@@ -15,6 +16,19 @@ class AppliedFlow extends Component {
 			mask: []
 		};
 
+		let resumeRaw = localStorage.getItem("A~F:resume:v0");
+		let maskRaw = localStorage.getItem("A~F:mask:v0");
+		if (typeof resumeRaw === 'string') {
+			let resume = JSON.parse(resumeRaw);
+			this.state.resume = resume;
+		}
+		if (typeof maskRaw === 'string') {
+			let mask = JSON.parse(maskRaw);
+			this.state.mask = mask;
+		}
+
+
+
 		this.onResumeChange = this.onResumeChange.bind(this);
 		this.onMaskChange = this.onMaskChange.bind(this);
 	}
@@ -22,20 +36,25 @@ class AppliedFlow extends Component {
 	render() {
 		return ([
 			<ResumeEditor key="ResumeEditor" resume={this.state.resume} onChange={this.onResumeChange} className="card" />,
-			<ResumePreviewer key="ResumePreviewer" resume={this.state.resume} className="card" />
+			<MaskEditor key="MaskEditor" resume={this.state.resume} mask={this.state.mask} className="card" onChange={this.onMaskChange}/>,
+			<ResumePreviewer key="ResumePreviewer" resume={this.state.resume} mask={this.state.mask} className="card" />
 		]);
 	}
 
 	onResumeChange(newResume) {
 		this.setState(() => ({
 			resume: newResume
-		}));
+		}),function () {
+			localStorage.setItem("A~F:resume:v0",JSON.stringify(newResume));
+		});
 	}
 
 	onMaskChange(newMask) {
 		this.setState(() => ({
 			mask: newMask
-		}));
+		}),function () {
+			localStorage.setItem("A~F:mask:v0",JSON.stringify(newMask));
+		});
 	}
 
 	static generateID() {
