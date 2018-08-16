@@ -27,8 +27,6 @@ class AppliedFlow extends Component {
 			this.state.mask = mask;
 		}
 
-
-
 		this.onResumeChange = this.onResumeChange.bind(this);
 		this.onMaskChange = this.onMaskChange.bind(this);
 	}
@@ -37,7 +35,8 @@ class AppliedFlow extends Component {
 		return ([
 			<ResumeEditor key="ResumeEditor" resume={this.state.resume} onChange={this.onResumeChange} className="card" />,
 			<MaskEditor key="MaskEditor" resume={this.state.resume} mask={this.state.mask} className="card" onChange={this.onMaskChange}/>,
-			<ResumePreviewer key="ResumePreviewer" resume={this.state.resume} mask={this.state.mask} className="card" />
+			<ResumePreviewer key="ResumePreviewer" resume={this.state.resume} mask={this.state.mask} className="card" />,
+			<textarea className="card" key="ExportData" value={JSON.stringify(this.state.resume)} />
 		]);
 	}
 
