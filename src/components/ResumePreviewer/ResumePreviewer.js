@@ -33,7 +33,7 @@ class ResumePreviewer extends Component {
 						)}
 					</section>
 				)}
-				<footer>Made with Applied~Flow, an application by GlennMadsen</footer>
+				<footer>Made with Applied~Flow, an application by Glenn Madsen</footer>
 			</article>
 		);
 	}
